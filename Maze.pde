@@ -15,6 +15,8 @@ void setup(){
 
  rectMode(CENTER);
  fill(0);
+ 
+ //build the maze! 
   boundaries.add(new Boundary(width/2+15, 5,width-50, 10));
   boundaries.add(new Boundary(width/2,height-5,width,10));
   boundaries.add(new Boundary(width-5,height/2-25,10,height-30));
@@ -55,19 +57,27 @@ void draw(){
  
 
 
-  
+ 
  
  for (Boundary wall: boundaries){
    
+   //draw maze walls
+   
    wall.display(); 
+   
+   //Iterate through bugs
    
    for(Bug b: bugs){  
     b.display();
+    
+    //iterate through bugs again
     for(Bug a: bugs){
       
 
+       //check to see if deflections happen
      if(b.isHitting(wall.boundrect) || b.isHitting(a.bugrec)){
       b.bounce();
+     
       println("x = " + b.vel.x);
       println("y = " +b.vel.y);
      }
@@ -80,12 +90,14 @@ void draw(){
   
  
  
+ //bugs move every 10 frames
  if(frameCount%10 ==1){
     for(Bug b: bugs){
    b.mov();
   } 
  }
  
+ //new bug every 160 frames
  if(frameCount%160 ==1){
 
   Bug p = new Bug(0, 15);
