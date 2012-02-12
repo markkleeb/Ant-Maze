@@ -64,29 +64,41 @@ void draw(){
    //draw maze walls
    
    wall.display(); 
+ }
+  
+  for (Bug b: bugs){
    
+   b.display();
+  } 
    //Iterate through bugs
    
    for(Bug b: bugs){  
-    b.display();
-    
     //iterate through bugs again
     for(Bug a: bugs){
       
 
        //check to see if deflections happen
-     if(b.isHitting(wall.boundrect) || b.isHitting(a.bugrec)){
+     if(b != a && b.isHitting(a.bugrec)){
       b.bounce();
      
-      println("x = " + b.vel.x);
-      println("y = " +b.vel.y);
+    //  println("x = " + b.vel.x);
+     // println("y = " +b.vel.y);
      }
     }
    
  }
  
   
+  for(Boundary wall: boundaries){
+   for(Bug b: bugs){
+    if(b.isHitting(wall.boundrect)){
+     b.bounce(); 
+    }
+     
+   }
+    
   }
+  
   
  
  
@@ -103,6 +115,19 @@ void draw(){
   Bug p = new Bug(0, 15);
   bugs.add(p);
  
+ }
+ 
+ for(int i=0; i< bugs.size(); i++){
+  
+   Bug b = bugs.get(i);
+   
+  if(b.leave()){
+   
+   bugs.remove(i);
+    println("bye!");
+  }
+   
+   
  }
  
 

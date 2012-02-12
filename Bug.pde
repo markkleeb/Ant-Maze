@@ -40,7 +40,7 @@ class Bug {
       rotate(0);
     }
     //draw ant
-    fill(0);
+    fill(255, 100, 100);
     strokeWeight(1);
     noStroke();
     ellipse(0, 0, w, h);
@@ -112,8 +112,8 @@ class Bug {
 //add velocity vector to position vector
     
     pos.add(vel);
-    bugrec.x += vel.x;
-    bugrec.y += vel.y;
+    bugrec.x = int(pos.x);
+    bugrec.y = int(pos.y);
     //  vel.x = constrain(vel.x, -5, 5);
     // vel.y = constrain(vel.y, -5, 5);
     pos.x = constrain(pos.x, 0, width);
@@ -134,11 +134,13 @@ class Bug {
 
   boolean leave() {
 
-    if (pos.x > width) {
-
-      return true;
+   if(pos.x > 340 && pos.y > 260){
+         return true;
+      
     }
     return false;
-  }
+  
 }
 
+
+}

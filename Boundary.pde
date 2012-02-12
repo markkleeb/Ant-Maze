@@ -31,9 +31,7 @@ class Boundary {
     
     pushMatrix();
     translate(x,y);
-     rect(0,0,w,h);
-     boundrect.x = 0;
-     boundrect.y = 0;
+     rect(0,0,boundrect.width,boundrect.height);
     popMatrix();  
   }
   
