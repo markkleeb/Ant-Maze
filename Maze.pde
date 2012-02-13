@@ -54,8 +54,10 @@ void setup(){
 void draw(){
  
  background(255);
- 
-
+ stroke(0, 255, 0);
+ strokeWeight(2);
+ line(280, 260, 400, 260);
+text("GOAL", 350, 280);
 
  
  
@@ -123,6 +125,9 @@ void draw(){
    
   if(b.leave()){
    
+    fill(0, 255, 0);
+    rectMode(CORNER);
+    rect(350, 260, 50, 40);
    bugs.remove(i);
     println("bye!");
   }

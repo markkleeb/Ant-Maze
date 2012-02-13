@@ -2,6 +2,7 @@ class Bug {
 
   float w;
   float h;
+  float theta;
   PVector pos;
   PVector vel = new PVector(5, 0);
   boolean vert = false;
@@ -20,15 +21,16 @@ class Bug {
     bugrec = new Rectangle(int(pos.x), int(pos.y), 25, 10);
 
     //generate legs for each bug
-
-    legs.add(new Leg(pos.x, pos.y));
+    
+      legs.add(new Leg(pos.x, pos.y));
     legs.add(new Leg(pos.x+5, pos.y));
     legs.add(new Leg(pos.x-5, pos.y));
+
   }
 
   void display() {
-
-    ellipseMode(CENTER);
+    
+  
     pushMatrix();
     translate(pos.x, pos.y);
 
@@ -46,7 +48,14 @@ class Bug {
     ellipse(0, 0, w, h);
     ellipse(-5, 0, w, h);
     ellipse(5, 0, w, h);
+    for(Leg l:legs){
+
+      l.display();
+    }
     popMatrix();
+  
+ 
+     
   }
 
   void bounce() {
@@ -112,6 +121,7 @@ class Bug {
 //add velocity vector to position vector
     
     pos.add(vel);
+   
     bugrec.x = int(pos.x);
     bugrec.y = int(pos.y);
     //  vel.x = constrain(vel.x, -5, 5);
