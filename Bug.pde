@@ -15,10 +15,10 @@ class Bug {
     pos = new PVector(x, y);
     legs = new ArrayList<Leg>();
     w = 10;
-    h = w;
+    h = 10;
 
     //draw bug rectangle
-    bugrec = new Rectangle(int(pos.x), int(pos.y), 25, 10);
+    bugrec = new Rectangle(int(pos.x-25/2), int(pos.y-10/2), 25, 10);
 
     //generate legs for each bug
     
@@ -53,7 +53,7 @@ class Bug {
       l.display();
     }
     popMatrix();
-  
+
  
      
   }
@@ -121,9 +121,19 @@ class Bug {
 //add velocity vector to position vector
     
     pos.add(vel);
-   
-    bugrec.x = int(pos.x);
-    bugrec.y = int(pos.y);
+    if (vert) {
+    bugrec.x = int(pos.x-bugrec.width/2);
+    bugrec.y = int(pos.y-bugrec.height/2);
+   bugrec.width = 10;
+   bugrec.height = 25;
+    
+    } else {
+    bugrec.x = int(pos.x-bugrec.width/2);
+    bugrec.y = int(pos.y-bugrec.height/2);
+    bugrec.width = 25;  
+    bugrec.height = 10;
+      
+    }
     //  vel.x = constrain(vel.x, -5, 5);
     // vel.y = constrain(vel.y, -5, 5);
     pos.x = constrain(pos.x, 0, width);

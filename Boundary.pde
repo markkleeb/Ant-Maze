@@ -1,10 +1,10 @@
 class Boundary {
   
  
- float x;
+/* float x;
  float y;
  float w;
- float h;
+ float h;*/
  
  Rectangle boundrect;
   
@@ -12,11 +12,11 @@ class Boundary {
   Boundary(float x, float y, float w, float h){
  
  //define boundaries   
-   this.x = x;
+   /*this.x = x;
    this.y = y;
    this.w = w;
-   this.h = h;
-   boundrect = new Rectangle(int(x), int(y), int(w), int(h));
+   this.h = h;*/
+   boundrect = new Rectangle(int(x-w/2), int(y-h/2), int(w), int(h));
    
     
   }
@@ -27,12 +27,15 @@ class Boundary {
     
     fill(0);
     stroke(0);
-    rectMode(CENTER); 
+    rectMode(CORNER); 
     
     pushMatrix();
-    translate(x,y);
+    translate(boundrect.x,boundrect.y);
      rect(0,0,boundrect.width,boundrect.height);
     popMatrix();  
+    
+    
+    
   }
   
   

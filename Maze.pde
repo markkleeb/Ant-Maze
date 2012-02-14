@@ -6,21 +6,21 @@ ArrayList<Boundary> boundaries;
 
 
 
-void setup(){
- size(400, 300);
- smooth();
- 
- bugs = new ArrayList<Bug>();
- boundaries = new ArrayList<Boundary>();
+void setup() {
+  size(400, 300);
+  smooth();
 
- rectMode(CENTER);
- fill(0);
- 
- //build the maze! 
-  boundaries.add(new Boundary(width/2+15, 5,width-50, 10));
-  boundaries.add(new Boundary(width/2,height-5,width,10));
-  boundaries.add(new Boundary(width-5,height/2-25,10,height-30));
-  boundaries.add(new Boundary(5,height/2+15,10,height-50));
+  bugs = new ArrayList<Bug>();
+  boundaries = new ArrayList<Boundary>();
+
+  rectMode(CENTER);
+  fill(0);
+
+  //build the maze! 
+  boundaries.add(new Boundary(width/2+15, 5, width-50, 10));
+  boundaries.add(new Boundary(width/2, height-5, width, 10));
+  boundaries.add(new Boundary(width-5, height/2-25, 10, height-30));
+  boundaries.add(new Boundary(5, height/2+15, 10, height-50));
   boundaries.add(new Boundary(40, height/2-50, 5, height-200));
   boundaries.add(new Boundary(75, height/2-100, 5, height - 200));
   boundaries.add(new Boundary(137, height/2-2, 200, 5));
@@ -48,93 +48,83 @@ void setup(){
   boundaries.add(new Boundary(310, 260, 60, 5));
   boundaries.add(new Boundary(240, 260, 5, 100));
   boundaries.add(new Boundary(280, 125, 5, 40));
-  
 }
 
-void draw(){
- 
- background(255);
- stroke(0, 255, 0);
- strokeWeight(2);
- line(280, 260, 400, 260);
-text("GOAL", 350, 280);
+void draw() {
 
- 
- 
- for (Boundary wall: boundaries){
-   
-   //draw maze walls
-   
-   wall.display(); 
- }
-  
-  for (Bug b: bugs){
-   
-   b.display();
+  background(255);
+  stroke(0, 255, 0);
+  strokeWeight(2);
+  line(280, 260, 400, 260);
+  text("GOAL", 350, 280);
+
+
+
+  for (Boundary wall: boundaries) {
+
+    //draw maze walls
+
+    wall.display();
+  }
+
+  for (Bug b: bugs) {
+
+    b.display();
   } 
-   //Iterate through bugs
-   
-   for(Bug b: bugs){  
+  //Iterate through bugs
+
+  for (Bug b: bugs) {  
     //iterate through bugs again
-    for(Bug a: bugs){
-      
+    for (Bug a: bugs) {
 
-       //check to see if deflections happen
-     if(b != a && b.isHitting(a.bugrec)){
-      b.bounce();
-     
-    //  println("x = " + b.vel.x);
-     // println("y = " +b.vel.y);
-     }
+
+      //check to see if deflections happen
+      if (b != a && b.isHitting(a.bugrec)) {
+        b.bounce();
+
+        //  println("x = " + b.vel.x);
+        // println("y = " +b.vel.y);
+      }
     }
-   
- }
- 
-  for(Bug b: bugs){
-  for(Boundary wall: boundaries){
-    if(b.isHitting(wall.boundrect)){
-     b.bounce(); 
+  }
+
+  for (Bug b: bugs) {
+    for (Boundary wall: boundaries) {
+      if (b.isHitting(wall.boundrect)) {
+        b.bounce();
+      }
     }
-     
-   }
-    
   }
-  
-  
- 
- 
- //bugs move every 10 frames
- if(frameCount%10 ==1){
-    for(Bug b: bugs){
-   b.mov();
-  } 
- }
- 
- //new bug every 160 frames
- if(frameCount%160 ==1){
 
-  Bug p = new Bug(0, 20);
-  bugs.add(p);
- 
- }
- 
- for(int i=0; i< bugs.size(); i++){
-  
-   Bug b = bugs.get(i);
-   
-  if(b.leave()){
-   
-    fill(0, 255, 0);
-    rectMode(CORNER);
-    rect(350, 260, 50, 40);
-   bugs.remove(i);
-    println("bye!");
+
+
+
+  //bugs move every 10 frames
+  if (frameCount%10 ==1) {
+    for (Bug b: bugs) {
+      b.mov();
+    }
   }
-   
-   
- }
- 
 
- 
-  
+  //new bug every 160 frames
+  if (frameCount%160 ==1) {
+
+    Bug p = new Bug(0, 20);
+    bugs.add(p);
+  }
+
+  for (int i=0; i< bugs.size(); i++) {
+
+    Bug b = bugs.get(i);
+
+    if (b.leave()) {
+
+      fill(0, 255, 0);
+      rectMode(CORNER);
+      rect(350, 260, 50, 40);
+      bugs.remove(i);
+      println("bye!");
+    }
+  }
 }
+
