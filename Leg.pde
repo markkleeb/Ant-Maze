@@ -17,12 +17,12 @@ class Leg{
   
    stroke(0);
    pushMatrix();
-  translate(pos.x, pos.y-15);
+  translate(pos.x, pos.y-20);
   rotate(angle);
   line(0, 5, 0, 10);
   popMatrix();
   pushMatrix();
-  translate(pos.x, pos.y-15);
+  translate(pos.x, pos.y-20);
   rotate(-angle);
   line(0, -5, 0, -10);
   popMatrix();

@@ -90,9 +90,8 @@ text("GOAL", 350, 280);
    
  }
  
-  
+  for(Bug b: bugs){
   for(Boundary wall: boundaries){
-   for(Bug b: bugs){
     if(b.isHitting(wall.boundrect)){
      b.bounce(); 
     }
@@ -114,7 +113,7 @@ text("GOAL", 350, 280);
  //new bug every 160 frames
  if(frameCount%160 ==1){
 
-  Bug p = new Bug(0, 15);
+  Bug p = new Bug(0, 20);
   bugs.add(p);
  
  }
